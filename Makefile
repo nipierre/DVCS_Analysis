@@ -7,6 +7,7 @@ LFLAGS = -I./include
 LHAPDF = /sps/compass/npierre/LHAPDF6
 LHAPDF_INCL += -I$(LHAPDF)/include
 LHAPDF_LIBS += -L$(LHAPDF)/lib -lLHAPDF
+OBJSF = plot_dis.o GetFlux.o HistLoader.o
 
 ifeq ($(DEBUG),1)
 CCFLAGS += -DDEBUG
@@ -25,7 +26,7 @@ plot_dis.o: plot_dis.cc include/plot_dis.h include/GetFlux.h include/HistLoader.
 
 plot_dis: plot_dis.o GetFlux.o HistLoader.o
 	@echo 'Building DVCS analysis package..'
-	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $< GetFlux.o HistLoader.o
+	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $(OBJSF)
 
 clean :
 	@rm -rf *.o plot_dis
