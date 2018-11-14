@@ -214,6 +214,7 @@ int main(int argc, char **argv)
 		cout << FRED("ERROR : Not enough arguments.") << endl;
 		cout << FRED("Asked : 3 *** Received : ") << FRED(argc-1) << endl;
 		cout << FRED("./plot_dis [run1] [run2]") << endl;
+		cout << FRED("Use ./plot_dis -h for further help") << endl;
 
 		return 1;
 	}
