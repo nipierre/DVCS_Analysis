@@ -3,7 +3,7 @@ CXX = g++
 CCFLAGS = -g -O1 -W -Wall -Wno-unused-parameter -Wno-ignored-qualifiers #-pedantic -fPIC
 ROOTFLAGS = `root-config --cflags --glibs`
 ROOTVERSION = -D ROOT5
-LFLAGS = -I/.
+LFLAGS = -I./include
 LHAPDF = /sps/compass/npierre/LHAPDF6
 LHAPDF_INCL += -I$(LHAPDF)/include
 LHAPDF_LIBS += -L$(LHAPDF)/lib -lLHAPDF
@@ -14,12 +14,18 @@ endif
 
 all : plot_dis
 
-%.o: %.cc %.h
-	$(CXX) $(CCFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
+GetFlux.o: GetFlux.cc GetFlux.h
+	$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
 
-plot_dis: plot_dis.cc plot_dis.h HistLoader.h GetFlux.h GetFlux.o HistLoader.o
+HistLoader.o: HistLoader.cc HistLoader.h
+	$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
+
+plot_dis.o: plot_dis.cc plot_dis.h GetFlux.h HistLoader.h
+	$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
+
+plot_dis: plot_dis.o GetFlux.o HistLoader.o
 	@echo 'Building DVCS analysis package..'
-	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $< $(LFLAGS)
+	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $<
 
 clean :
-	@rm -rf *.o DVCS_analysis
+	@rm -rf *.o plot_dis
