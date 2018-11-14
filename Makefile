@@ -14,13 +14,13 @@ endif
 
 all : plot_dis
 
-GetFlux.o: GetFlux.cc GetFlux.h
+GetFlux.o: GetFlux.cc include/GetFlux.h
 	$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
 
-HistLoader.o: HistLoader.cc HistLoader.h
+HistLoader.o: HistLoader.cc include/HistLoader.h
 	$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
 
-plot_dis.o: plot_dis.cc plot_dis.h GetFlux.h HistLoader.h
+plot_dis.o: plot_dis.cc include/plot_dis.h include/GetFlux.h include/HistLoader.h
 	$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
 
 plot_dis: plot_dis.o GetFlux.o HistLoader.o
