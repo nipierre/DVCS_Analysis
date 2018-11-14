@@ -227,7 +227,7 @@ int main(int argc, char **argv)
     {
       cout << FCYN("HELP : available flags :") << endl;
       cout << FCYN("-pm") << endl;
-			cout << "./plot_dis -pm [runp1] [runp2] [runm1] [runm2]" << endl;
+			cout << FCYN("./plot_dis -pm [runp1] [runp2] [runm1] [runm2]") << endl;
       return 0;
     }
 
