@@ -209,15 +209,6 @@ void rebin2(TH1 *h, Int_t ngx, Int_t ngy)
 int main(int argc, char **argv)
 // void plot_dis(int run1, int run2, int runm1=0, int runm2=0)
 {
-	if(argc < 3)
-  {
-    cout << "ERROR : Not enough arguments." << endl;
-    cout << "Asked : 3 *** Received : " << argc-1 << endl;
-    cout << "./plot_dis [run1] [run2]" << endl;
-
-    return 1;
-  }
-
 	int run1, run2, runm1, runm2;
 
 	for (int i = 1; i < argc; i++)
@@ -229,6 +220,15 @@ int main(int argc, char **argv)
 			cout << "./plot_dis -pm [runp1] [runp2] [runm1] [runm2]" << endl;
       return 0;
     }
+
+		if(argc < 3)
+	  {
+	    cout << FRED("ERROR : Not enough arguments.") << endl;
+	    cout << FRED("Asked : 3 *** Received : ") << argc-1 << endl;
+	    cout << FRED("./plot_dis [run1] [run2]") << endl;
+
+	    return 1;
+	  }
 
     if (string(argv[i]) == "-pm")
     {
