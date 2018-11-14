@@ -9,5 +9,7 @@
 #include "TColor.h"
 #include "TPaveText.h"
 #include "TF1.h"
+#include "TROOT.h"
+#include "TStyle.h"
 
 #endif
