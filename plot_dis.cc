@@ -208,12 +208,45 @@ void rebin2(TH1 *h, Int_t ngx, Int_t ngy)
 int main(int argc, char **argv)
 // void plot_dis(int run1, int run2, int runm1=0, int runm2=0)
 {
+	if(argc < 3)
+  {
+    cout << "ERROR : Not enough arguments." << endl;
+    cout << "Asked : 3 *** Received : " << argc-1 << endl;
+    cout << "./plot_dis [run1] [run2]" << endl;
+
+    return 1;
+  }
+
+	int run1, run2, runm1, runm2;
+
+	for (int i = 1; i < argc; i++)
+  {
+    if (string(argv[i]) == "-h")
+    {
+      cout << FCYN("HELP : available flags :") << endl;
+      cout << FCYN("-pm") << endl;
+			cout << "./plot_dis -pm [runp1] [runp2] [runm1] [runm2]" << endl;
+      return 0;
+    }
+
+    if (string(argv[i]) == "-pm")
+    {
+      run1 = argv[2].atoi();
+			run2 = argv[3].atoi();
+			runm1 = argv[4].atoi();
+			runm2 = argv[5].atoi();
+    }
+		else
+		{
+			run1 = argv[2].atoi();
+			run2 = argv[3].atoi();
+			runm1 = run1;
+			runm2 = run2;
+		}
+  }
 
 	char tstr[500];
 	char tstr2[500];
-
-	if(runm1 == 0) runm1 = run1;
-	if(runm2 == 0) runm2 = run2;
 
 	//
 	// The color palette used for xbQ2 plots

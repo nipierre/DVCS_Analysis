@@ -11,12 +11,12 @@ ifeq ($(DEBUG),1)
 CCFLAGS += -DDEBUG
 endif
 
-all : DVCS_analysis
+all : plot_dis
 
 %.o: %.cc %.h
 	@$(CXX) $(CCFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
 
-DVCS_analysis: plotdis.cc plotdis.h HistLoader.h GetFlux.h
+plot_dis: plot_dis.cc plot_dis.h HistLoader.h GetFlux.h
 	@echo 'Building DVCS analysis package..'
 	@$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $<
 
