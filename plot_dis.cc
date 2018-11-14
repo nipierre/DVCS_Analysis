@@ -232,15 +232,15 @@ int main(int argc, char **argv)
 
     if (string(argv[i]) == "-pm")
     {
-      run1 = argv[2].atoi();
-			run2 = argv[3].atoi();
-			runm1 = argv[4].atoi();
-			runm2 = argv[5].atoi();
+      run1 = atoi(argv[2]);
+			run2 = atoi(argv[3]);
+			runm1 = atoi(argv[4]);
+			runm2 = atoi(argv[5]);
     }
 		else
 		{
-			run1 = argv[2].atoi();
-			run2 = argv[3].atoi();
+			run1 = atoi(argv[2]);
+			run2 = atoi(argv[3]);
 			runm1 = run1;
 			runm2 = run2;
 		}

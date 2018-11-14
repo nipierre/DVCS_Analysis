@@ -6,5 +6,8 @@
 #include "GetFlux.h"
 #include "TLine.h"
 #include "TCanvas.h"
+#include "TColor.h"
+#include "TPaveText.h"
+#include "TF1.h"
 
 #endif
