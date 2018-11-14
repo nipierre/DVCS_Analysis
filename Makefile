@@ -3,6 +3,7 @@ CXX = g++
 CCFLAGS = -g -O1 -W -Wall -Wno-unused-parameter -Wno-ignored-qualifiers #-pedantic -fPIC
 ROOTFLAGS = `root-config --cflags --glibs`
 ROOTVERSION = -D ROOT5
+LFLAGS = -I/.
 LHAPDF = /sps/compass/npierre/LHAPDF6
 LHAPDF_INCL += -I$(LHAPDF)/include
 LHAPDF_LIBS += -L$(LHAPDF)/lib -lLHAPDF
@@ -18,7 +19,7 @@ all : plot_dis
 
 plot_dis: plot_dis.cc plot_dis.h HistLoader.h GetFlux.h
 	@echo 'Building DVCS analysis package..'
-	@$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $<
+	@$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $< $(LFLAGS)
 
 clean :
 	@rm -rf *.o DVCS_analysis
