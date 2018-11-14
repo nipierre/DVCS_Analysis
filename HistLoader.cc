@@ -28,7 +28,7 @@ HistLoader::HistLoader(const char* base, int runmin, int runmax)
       if(!testf) continue;
       fclose(testf);
       //cout<<"Loading file "<<fname<<endl;
-      TFile* f = new TFile(fname); 
+      TFile* f = new TFile(fname);
       //cout<<"f: "<<f<<endl;
       if(!f) continue;
       if(!f->IsOpen()) {delete f; continue;}
@@ -62,7 +62,7 @@ HistLoader::HistLoader(const char* base, int runmin, int runmax)
       filevec[fid].push_back(f);
       runvec[fid].push_back(run);
     }
-  }  
+  }
   cout<<"Total number of opened files: "
       <<filevec[0].size()+filevec[1].size()+filevec[2].size()<<endl;
 }
@@ -71,7 +71,7 @@ HistLoader::HistLoader(const char* base, int runmin, int runmax)
 void HistLoader::CloseAll()
 {
   for(int i = 0; i < 3; i++) {
-    for(int j = 0; j < filevec[i].size(); j++) {
+    for(int j = 0; j < int(filevec[i].size()); j++) {
       if(!filevec[i][j]) continue;
       filevec[i][j]->Close("R");
       delete filevec[i][j]; filevec[i][j]=NULL;
@@ -93,7 +93,7 @@ TH1F* HistLoader::GetTH1(char* name, int charge, int runmin, int runmax)
       if(charge > 0 && ci != 1) continue;
     }
     //cout<<"runvec["<<ci<<"].size(): "<<runvec[ci].size()<<endl;
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       if(nopen == 500) {
@@ -134,7 +134,7 @@ TH1F* HistLoader::GetTH1(char* name, int charge, int runmin, int runmax)
         //cout<<"Histogram "<<name<<" added."<<endl;
       }
       //if( h2->GetBinContent(4)/h2->GetBinContent(1)< 0.99 )
-      //cout << fi << ": "<< h2->GetBinContent(4) << "/" << h2->GetBinContent(1) 
+      //cout << fi << ": "<< h2->GetBinContent(4) << "/" << h2->GetBinContent(1)
       //     << "=" << h2->GetBinContent(4)/h2->GetBinContent(1) << endl;
       delete h2;
       //cout<<"closing "<<filevec[ci][fi]->GetName()<<endl;
@@ -159,7 +159,7 @@ TH2F* HistLoader::GetTH2(char* name, int charge, int runmin, int runmax)
       if(charge > 0 && ci != 1) continue;
     }
 
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       //cout<<"nopen: "<<nopen<<endl;
@@ -204,7 +204,7 @@ TH3F* HistLoader::GetTH3(char* name, int charge, int runmin, int runmax)
       if(charge < 0 && ci != 0) continue;
       if(charge > 0 && ci != 1) continue;
     }
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       //cout<<"nopen: "<<nopen<<endl;
@@ -267,7 +267,7 @@ TChain* HistLoader::GetChain(char* name, int charge, int runmin, int runmax)
       if(charge > 0 && ci != 1) continue;
     }
     //cout<<"runvec["<<ci<<"].size(): "<<runvec[ci].size()<<endl;
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       //if( fi > 1 ) continue;
@@ -364,7 +364,7 @@ TTree* HistLoader::GetTree(char* name, int charge, int runmin, int runmax)
       if(charge > 0 && ci != 1) continue;
     }
     //cout<<"runvec["<<ci<<"].size(): "<<runvec[ci].size()<<endl;
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       if(nopen == 500) {
@@ -457,7 +457,7 @@ TList* HistLoader::GetTreeList(char* name, int charge, int runmin, int runmax)
       if(charge > 0 && ci != 1) continue;
     }
     //cout<<"runvec["<<ci<<"].size(): "<<runvec[ci].size()<<endl;
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       if(nopen == 500) {
@@ -550,7 +550,7 @@ std::vector<TTree*> HistLoader::GetTreeVector(char* name, int charge, int runmin
       if(charge > 0 && ci != 1) continue;
     }
     //cout<<"runvec["<<ci<<"].size(): "<<runvec[ci].size()<<endl;
-    for(int fi = 0; fi < runvec[ci].size(); fi++) {
+    for(int fi = 0; fi < int(runvec[ci].size()); fi++) {
       int run = runvec[ci][fi];
       if(run<runmin || run>runmax) continue;
       if(nopen == 500) {
