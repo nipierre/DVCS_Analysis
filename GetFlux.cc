@@ -12,16 +12,6 @@ using namespace std;
 
 static std::set<unsigned int> badspills;
 
-static int bsl_select(const struct dirent *entry)
-{
-  std::string str = entry->d_name;
-  std::size_t pos = str.find(".list");
-  if( pos != std::string::npos)
-    return 1;
-  return 0;
-}
-
-
 void fill_badspills()
 {
   struct dirent **namelist;

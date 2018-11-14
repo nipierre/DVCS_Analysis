@@ -298,8 +298,16 @@ int main(int argc, char **argv)
 	std::string trignames[5] = {"all", "MT", "LT", "OT", "LAST"};
 	Double_t flux_p, eflux_p, flux_m, eflux_m;
 	fill_badspills();
-	if( get_flux(run1, run2, 1, 2, flux_p, eflux_p) < 0 ) return;
-	if( get_flux(runm1, runm2, -1, 2, flux_m, eflux_m) < 0 ) return;
+	if( get_flux(run1, run2, 1, 2, flux_p, eflux_p) < 0 )
+	{
+		cout << "ERROR : Flux is negative !" << endl;
+		return 1;
+	}
+	if( get_flux(runm1, runm2, -1, 2, flux_m, eflux_m) < 0 )
+	{
+		cout << "ERROR : Flux is negative !" << endl;
+		return 1;
+	}
 	//if( get_flux(run1, run1, 0, 2, flux_p, eflux_p) < 0 ) return;
 	//if( get_flux(run2, run2, 0, 2, flux_m, eflux_m) < 0 ) return;
 

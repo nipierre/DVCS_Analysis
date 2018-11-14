@@ -8,9 +8,17 @@
 #include <set>
 #include <string>
 
-static int bsl_select(const struct dirent *entry);
 void fill_badspills();
 int get_flux(int run_min, int run_max, int charge, float half_win,
     Double_t& flux_tot, Double_t& eflux_tot);
+
+static int bsl_select(const struct dirent *entry)
+{
+  std::string str = entry->d_name;
+  std::size_t pos = str.find(".list");
+  if( pos != std::string::npos)
+    return 1;
+  return 0;
+};
 
 #endif
