@@ -1,5 +1,7 @@
 #include "GetFlux.h"
 
+using namespace std;
+
 //char* flux_db = ".";
 //static char* flux_db = "/afs/cern.ch/compass/dvcs/Production/Analysis/FluxDB-20170216";
 #define flux_db "/afs/cern.ch/compass/dvcs/Production/Analysis/Students/avidon/rootscripts/flux" //pour lire le flux en local

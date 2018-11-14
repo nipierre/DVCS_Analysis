@@ -1,5 +1,6 @@
 #include "plot_dis.h"
 
+using namespace std;
 
 void plot_HODO(float x0, float y0, float aXsz, float aYsz,
 		float dcx0, float dcy0, float dcXsz, float dcYsz,

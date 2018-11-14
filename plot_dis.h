@@ -4,5 +4,7 @@
 #include <string>
 #include "HistLoader.h"
 #include "GetFlux.h"
+#include "Tline.h"
+#include "TCanvas.h"
 
 #endif
