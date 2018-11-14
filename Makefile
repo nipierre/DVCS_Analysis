@@ -15,11 +15,11 @@ endif
 all : plot_dis
 
 %.o: %.cc %.h
-	@$(CXX) $(CCFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
+	$(CXX) $(CCFLAGS) $(ROOTFLAGS) $(ROOTVERSION) -c -o $@ $<
 
 plot_dis: plot_dis.cc plot_dis.h HistLoader.h GetFlux.h GetFlux.o HistLoader.o
 	@echo 'Building DVCS analysis package..'
-	@$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $< $(LFLAGS)
+	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $< $(LFLAGS)
 
 clean :
 	@rm -rf *.o DVCS_analysis
