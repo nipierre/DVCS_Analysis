@@ -249,8 +249,8 @@ int main(int argc, char **argv)
     }
 		else
 		{
-			run1 = atoi(argv[2]);
-			run2 = atoi(argv[3]);
+			run1 = atoi(argv[1]);
+			run2 = atoi(argv[2]);
 			runm1 = run1;
 			runm2 = run2;
 		}
