@@ -25,7 +25,7 @@ plot_dis.o: plot_dis.cc include/plot_dis.h include/GetFlux.h include/HistLoader.
 
 plot_dis: plot_dis.o GetFlux.o HistLoader.o
 	@echo 'Building DVCS analysis package..'
-	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $<
+	$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) $(ROOTVERSION) -o $@ $< GetFlux.o HistLoader.o
 
 clean :
 	@rm -rf *.o plot_dis
