@@ -262,6 +262,14 @@ int main(int argc, char **argv)
 	Int_t FI1 = TColor::CreateGradientColorTable(4, Length1, Red1, Green1, Blue1, nc);
 	for (int i=0;i<nc;i++) MyPalette[i] = FI1+i;
 
+	TCanvas c("c","c", 800, 600);
+	c.SetLeftMargin(0.1);
+	c.SetBottomMargin(0.1);
+	c.SetTopMargin(0.07);
+	c.SetRightMargin(0.1);
+
+	c.cd();
+
 
 	gROOT->SetStyle("Plain");
 	gStyle->SetOptStat(0);
@@ -286,14 +294,6 @@ int main(int argc, char **argv)
 
 	HistLoader hlp("..//outputs/2016/phast/%d/hist-1-%d.root",run1,run2);
 	HistLoader hlm("..//outputs/2016/phast/%d/hist-1-%d.root",runm1,runm2);
-
-	TCanvas c("c","c", 800, 600);
-	c.SetLeftMargin(0.1);
-	c.SetBottomMargin(0.1);
-	c.SetTopMargin(0.07);
-	c.SetRightMargin(0.1);
-
-	c.cd();
 
 	std::string trignames[5] = {"all", "MT", "LT", "OT", "LAST"};
 	Double_t flux_p, eflux_p, flux_m, eflux_m;
@@ -1051,10 +1051,10 @@ int main(int argc, char **argv)
 		sprintf(tstr,"plots/dis-%d-%d.pdf", run1, run2);
 		c.SaveAs(tstr);
 	}
-	return 0;
-}
 
 	sprintf(tstr,"plots/dis-%d-%d.pdf)", run1, run2);
 	c.SaveAs(tstr);
+
+	return 0;
 
 }
