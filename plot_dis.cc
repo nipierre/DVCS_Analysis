@@ -257,7 +257,7 @@ int main(int argc, char **argv)
   }
 
 	char tstr[500];
-	char tstr2[500];
+	// char tstr2[500];
 
 	//
 	// The color palette used for xbQ2 plots
@@ -537,9 +537,9 @@ int main(int argc, char **argv)
 		}
 	}
 
-	//return;
+	return;
 
-	//
+	*/
 			/*****************************************************
 	 							Vertex Chi2
 			 *****************************************************/
@@ -694,7 +694,7 @@ int main(int argc, char **argv)
 
 			TH2F* h2_p = hlp.GetTH2( tstr, 1 );
 			TH2F* h2_m = hlm.GetTH2( tstr, -1 );
-			int r = 2;
+			// int r = 2;
 			//			rebin2(h2_p,r,r);
 			//			rebin2(h2_m,r,r);
 			gStyle->SetPalette(51);
@@ -804,6 +804,7 @@ int main(int argc, char **argv)
 		c.SaveAs(tstr);
 	}
 	cout<<"end of hodoscopes"<<endl;
+	*/
 	/*****************************************************
 			  	  nu distribution
 	 *****************************************************/

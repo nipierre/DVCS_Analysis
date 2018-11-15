@@ -1,6 +1,6 @@
 CC = gcc
 CXX = g++
-CCFLAGS = -g -O1 -W -Wall -Wno-unused-parameter -Wno-ignored-qualifiers #-pedantic -fPIC
+CCFLAGS = -g -O1 -W -Wall -Wno-unused-parameter -Wno-ignored-qualifiers -Wunused-function #-pedantic -fPIC
 ROOTFLAGS = `root-config --cflags --glibs`
 LFLAGS = -I./include
 OBJSF = plot_dis.o GetFlux.o HistLoader.o
