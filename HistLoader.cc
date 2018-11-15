@@ -255,7 +255,7 @@ void HistLoader::DrawTH2(char* name)
 
 TChain* HistLoader::GetChain(char* name, int charge, int runmin, int runmax)
 {
-  char tstr[500];
+  // char tstr[500];
 
   if(fdummy) fdummy->cd();
   TChain* Chain = new TChain(name,"MyChain");
@@ -603,7 +603,7 @@ std::vector<TTree*> HistLoader::GetTreeVector(char* name, int charge, int runmin
       sprintf(tstr,"%s_%d_%d",name,run,fi);
       //cout << tstr << endl;
       fdummy->cd();
-      TTree* T = (TTree*)T2->Clone(tstr);
+      // TTree* T = (TTree*)T2->Clone(tstr);
 
       //list.push_back(T);
 
