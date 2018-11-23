@@ -10,7 +10,7 @@ ifeq ($(DEBUG),1)
 CCFLAGS += -DDEBUG
 endif
 
-all : plot_dis plot_target
+all : plot_dis plot_target rt_flux
 		@echo 'DVCS analysis package built !'
 
 GetFlux.o: GetFlux.cc include/GetFlux.h
