@@ -13,6 +13,7 @@
 #include "TStyle.h"
 
 #include "TMath.h"
+#include "TGraph.h"
 #include "TGraphErrors.h"
 #include "TEllipse.h"
 

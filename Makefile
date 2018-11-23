@@ -38,5 +38,11 @@ plot_target: plot_target.o target_coordinates.o HistLoader.o
 	@$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) -o $@ $^
 	@echo 'plot_target built !'
 
+rt_flux.o: rt_flux.cc include/rt_flux.h include/HistLoader.h
+	@$(CXX) $(CCFLAGS) $(LFLAGS) $(ROOTFLAGS) -c -o $@ $<
+
+rt_flux: rt_flux.o HistLoader.o
+	@$(CXX) $(CCFLAGS) -Wno-ignored-qualifiers $(ROOTFLAGS) -o $@ $^
+	@echo 'rt_flux built !'
 clean :
 	@rm -rf *.o plot_dis plot_target
